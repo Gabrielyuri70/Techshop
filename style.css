@@ -1,0 +1,302 @@
+:root {
+    --bg-color: #0b0f19;
+    --card-bg: rgba(23, 32, 51, 0.7);
+    --border-color: #2a364f;
+    --border-hover: #475569;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-color: #6366f1;
+    --accent-hover: #4f46e5;
+    --whatsapp-color: #22c55e;
+    --whatsapp-hover: #16a34a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg-color) 70%);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Header & Navegação */
+header {
+    text-align: center;
+    padding: 10px 0 0 0;
+}
+
+header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.nav-link {
+    flex: 1;
+    text-align: center;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 7px;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link.active {
+    color: #fff;
+    background: var(--accent-color);
+}
+
+.nav-link.whatsapp {
+    color: var(--whatsapp-color);
+}
+
+.nav-link.whatsapp:hover {
+    background: rgba(34, 197, 94, 0.15);
+}
+
+.header-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-top: 12px;
+}
+
+/* Cards & Seções */
+.card-step {
+    background: #172033;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    will-change: transform;
+}
+
+
+.card-step h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+/* Form Elements */
+label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+select, input {
+    width: 100%;
+    padding: 12px;
+    background: rgba(11, 15, 25, 0.8);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+select:focus, input:focus {
+    border-color: var(--accent-color);
+}
+
+/* Grids e Seleção de Apps */
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+}
+
+.app-card {
+    background: rgba(11, 15, 25, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.app-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+}
+
+.app-card.selected {
+    border-color: var(--accent-color);
+    background: rgba(99, 102, 241, 0.12);
+    box-shadow: 0 0 0 1px var(--accent-color);
+}
+
+.app-card h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.app-card span, .app-card p {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Botões Principais */
+.btn-pay {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: var(--accent-color);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.2s ease;
+}
+
+.btn-pay:hover {
+    background: var(--accent-hover);
+}
+
+.btn-whatsapp {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: var(--whatsapp-color);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 10px;
+    transition: background 0.2s ease;
+}
+
+.btn-whatsapp:hover {
+    background: var(--whatsapp-hover);
+}
+
+/* Alertas & Avisos */
+.alert-box {
+    padding: 12px;
+    background: rgba(225, 29, 72, 0.08);
+    border: 1px solid rgba(225, 29, 72, 0.3);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    color: #fda4af;
+    line-height: 1.4;
+}
+
+/* Tutorial Box */
+.tutorial-box {
+    background: rgba(11, 15, 25, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+.tutorial-box strong {
+    color: var(--text-primary);
+}
+
+/* Selo de Indicado */
+.badge-recommended {
+    display: inline-flex;
+    align-items: center;
+    background-color: #eab308;
+    color: #000000 !important;
+    font-size: 0.65rem;
+    font-weight: 900;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(234, 179, 8, 0.3);
+}
+
+.app-desc {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    font-weight: 500;
+    margin-top: 4px;
+    display: block;
+}
+
+/* Ajustes de Interface & Tutorial */
+.tutorial-box ol {
+    padding-left: 1.2rem;
+}
+
+.tutorial-box li {
+    margin-bottom: 6px;
+}
+
+select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Estado de Botão Desativado e Efeitos de Transição */
+.btn-pay.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: var(--border-color);
+    pointer-events: auto;
+}
+
+.card-step {
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.app-card {
+    user-select: none;
+}

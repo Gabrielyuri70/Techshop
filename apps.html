@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicativos Disponíveis</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="apps.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Aplicativos</h1>
+                        <nav class="nav-bar">
+                <a href="index.html" class="nav-link">Início</a>
+                <a href="apps.html" class="nav-link active">Apps</a>
+                <a href="aparelhos.html" class="nav-link">Aparelhos</a>
+                <a href="https://wa.me/5591993769751?text=Ol%C3%A1%2C%20estou%20precisando%20de%20suporte.%20Pode%20me%20ajudar%3F" target="_blank" class="nav-link whatsapp">Suporte</a>
+            </nav>
+            <p class="header-subtitle">Consulte a compatibilidade com a sua Smart TV</p>
+        </header>
+
+                <section class="card-step">
+            <h2>1. Selecione sua TV</h2>
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">
+                <div>
+                    <label for="brand-select">Marca da TV</label>
+                    <select id="brand-select" onchange="updateSystems()">
+                        <option value="">-- Selecione a Marca --</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="lg">LG</option>
+                        <option value="tcl">TCL</option>
+                        <option value="aoc">AOC</option>
+                        <option value="aiwa">AIWA</option>
+                        <option value="philco">Philco</option>
+                        <option value="semp">Semp</option>
+                        <option value="hisense">Hisense</option>
+                        <option value="multilaser">Multilaser</option>
+                        <option value="britania">Britânia</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                                <div>
+                    <label for="system-select">Sistema Operacional</label>
+                    <select id="system-select" onchange="filterApps()" disabled>
+                        <option value="">-- Escolha a marca primeiro --</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="card-step" id="results-section" style="display: none;">
+            <h2>2. Aplicativos Compatíveis</h2>
+            <div id="apps-container" class="app-grid" style="margin-top: 10px;">
+                <!-- Conteúdo via JS -->
+            </div>
+        </section>
+    </div>
+</body>
+</html>
