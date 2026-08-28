@@ -462,3 +462,11 @@ select:disabled {
     background-color: var(--whatsapp-hover);
     transform: scale(1.1);
 }
+.logo-header {
+    max-width: 280px; /* Ajuste este valor conforme o tamanho que desejar na tela */
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto; /* Centraliza a logo e dá um espaço para o menu abaixo */
+}
+
