@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aparelhos em Estoque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Aparelhos</h1>
+                        <div class="nav-container">
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-link">Início</a>
+        <a href="Download.html" class="nav-link">Download</a>
+        <a href="aparelhos.html" class="nav-link active">Aparelhos</a>
+        <button type="button" class="nav-link" onclick="openPanelModal()" style="background:none; border:none; font:inherit; cursor:pointer;">Painéis</button>
+        <a href="https://wa.me/5591993769751?text=Ol%C3%A1%2C%20estou%20precisando%20de%20suporte.%20Pode%20me%20ajudar%3F" target="_blank" class="nav-link whatsapp">Suporte</a>
+    </nav>
+</div>
+            <p class="header-subtitle">Dispositivos e TV Boxes à pronta entrega</p>
+        </header>
+
+        <section class="card-step">
+            <h2>Dispositivos em Estoque</h2>
+            <div class="app-grid" style="margin-top: 10px;">
+                
+                <div class="app-card">
+                    <div>
+                        <h3>Xiaomi MI Stick</h3>
+                        <p>Transforme qualquer TV em Smart TV Android com alta velocidade Premium, todo configurado, + 1 mês da Plataforma Grátis </p>
+                    </div>
+                    <div>
+                        <span style="color: #22c55e; font-weight: 700; font-size: 1rem; display: block; margin-top: 10px;">R$ 349,90</span>
+                        <a href="https://wa.me/5591993769751?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Xiaomi%20%20Mi%20Stick" target="_blank" class="btn-whatsapp">Comprar via WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="app-card">
+                    <div>
+                        <h3>TV Stick</h3>
+                        <p>Dispositivo compacto, ideal para portabilidade e custo benefício.
+Vai configurado + 1 mês da Plataforma Grátis</p>
+                    </div>
+                    <div>
+                        <span style="color: #22c55e; font-weight: 700; font-size: 1rem; display: block; margin-top: 10px;">R$ 249,90</span>
+                        <a href="https://wa.me/5591993769751?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20TV%20Stick" target="_blank" class="btn-whatsapp">Comprar via WhatsApp</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+  <!-- Modal de Acesso aos Painéis -->
+<div id="panel-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <button type="button" class="modal-close" onclick="closePanelModal()">&times;</button>
+        
+        <div id="pin-step">
+            <h3>Área Restrita</h3>
+            <p>Digite o PIN de acesso para visualizar os painéis:</p>
+            <input type="password" id="pin-input" maxlength="4" placeholder="****" onkeyup="if(event.key === 'Enter') validatePin()" style="text-align: center; font-size: 1.2rem; letter-spacing: 4px; width: 100%; padding: 8px; margin: 12px 0;">
+            <button type="button" class="btn-pay" onclick="validatePin()" style="width: 100%;">Acessar</button>
+            <p id="pin-error" style="color: #ff4d4d; font-size: 0.85rem; margin-top: 8px; display: none;">PIN incorreto. Tente novamente.</p>
+        </div>
+
+        <div id="panels-step" style="display: none;">
+            <h3>Painéis das Plataformas</h3>
+            <div class="panels-grid" style="display: grid; gap: 8px; max-height: 350px; overflow-y: auto; margin-top: 12px;">
+                <a href="https://panel-web.site" target="_blank" class="btn-pay">Painel UNITV</a>
+                <a href="https://searchdefense.top" target="_blank" class="btn-pay">Painel Uniplay</a>
+                <a href="https://controle.vip/users" target="_blank" class="btn-pay">Painel Five</a>
+                <a href="https://wwpanel.link/user-list" target="_blank" class="btn-pay">Painel Warez</a>
+                <a href="https://painelcliente.com/" target="_blank" class="btn-pay">Painel Play Fast</a>
+                <a href="https://painelnekotv.sbs" target="_blank" class="btn-pay">Painel Neko TV</a>
+                <a href="https://cms.rboys02.click/" target="_blank" class="btn-pay">Painel Rboys (GF)</a>
+                <a href="https://e3office.click" target="_blank" class="btn-pay">Painel E3PLAY</a>
+                <a href="https://lookdefense.top" target="_blank" class="btn-pay">Painel New TVs</a>
+                <a href="https://adminx.offo.dad/dashboard/iptv" target="_blank" class="btn-pay">Painel Elite</a>
+                <a href="https://dashboard.bz/login.php" target="_blank" class="btn-pay">Painel Club</a>
+                <a href="https://www.gestor.rs/master.asp" target="_blank" class="btn-pay">Painel Blade</a>
+                <a href="https://ailivecms.aiiptv.com/" target="_blank" class="btn-pay">Painel iplay5</a>
+                <a href="https://onecontrol.lat/login" target="_blank" class="btn-pay">Painel Cliente TV</a>
+                <a href="https://painel.p2player.top" target="_blank" class="btn-pay">Painel P2Player</a>
+                <a href="https://sparkpainel.top/" target="_blank" class="btn-pay">Painel Spark Play</a>
+                <a href="https://blackpainel.com/#" target="_blank" class="btn-pay">Painel Fire TV</a>
+                <a href="https://prpainel.online/#/resellers" target="_blank" class="btn-pay">Painel Power</a>
+                <a href="https://p2speed.com/#/sign-in" target="_blank" class="btn-pay">Painel P2speed</a>
+                <a href="https://lumatv.top/login" target="_blank" class="btn-pay">Painel Luma</a>
+                <a href="https://painelacesso1.com/login/" target="_blank" class="btn-pay">Painel P2CINE</a>
+                <a href="https://bin2.painelr.top/login" target="_blank" class="btn-pay">Painel Zeus</a>
+                <a href="https://ptvr.painelr.top/login" target="_blank" class="btn-pay">Painel Zeus Franquia</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openPanelModal() {
+        document.getElementById("panel-modal").style.display = "flex";
+        document.getElementById("pin-step").style.display = "block";
+        document.getElementById("panels-step").style.display = "none";
+        document.getElementById("pin-input").value = "";
+        document.getElementById("pin-error").style.display = "none";
+    }
+
+    function closePanelModal() {
+        document.getElementById("panel-modal").style.display = "none";
+    }
+
+    function validatePin() {
+        const pinInput = document.getElementById("pin-input").value;
+        const pinError = document.getElementById("pin-error");
+
+        if (pinInput === "2020") {
+            document.getElementById("pin-step").style.display = "none";
+            document.getElementById("panels-step").style.display = "block";
+        } else {
+            pinError.style.display = "block";
+        }
+    }
+</script>
+</body>
+</html>
