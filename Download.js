@@ -1,3 +1,5 @@
+Veja agora
+
 const brandSystems = {
     samsung: [
         { value: "tizen", label: "Tizen OS (Samsung)" },
@@ -303,8 +305,6 @@ function searchApps() {
     const searchInput = document.getElementById("search-input");
     const resultsSection = document.getElementById("results-section");
     const appsContainer = document.getElementById("apps-container");
-    const tvFields = document.getElementById("tv-fields");
-    const mobileFields = document.getElementById("mobile-fields");
 
     if (!searchInput || !resultsSection || !appsContainer) return;
 
@@ -313,23 +313,15 @@ function searchApps() {
     if (query === "") {
         resultsSection.style.display = "none";
         appsContainer.innerHTML = "";
-        
-        // Reexibe os seletores de acordo com a opção selecionada no tipo de dispositivo
-        const deviceTypeSelect = document.getElementById("device-type-select");
-        if (deviceTypeSelect) {
-            if (deviceTypeSelect.value === "tv") {
-                if (tvFields) tvFields.style.display = "block";
-            } else if (deviceTypeSelect.value === "mobile") {
-                if (mobileFields) mobileFields.style.display = "block";
-            }
-        }
         return;
     }
 
-    // Reseta os seletores ao digitar no campo de busca para evitar conflitos
+        // Reseta os seletores ao digitar no campo de busca para evitar conflitos
     const brandSelect = document.getElementById("brand-select");
     const systemSelect = document.getElementById("system-select");
     const mobileSelect = document.getElementById("mobile-os-select");
+    const tvFields = document.getElementById("tv-fields");
+    const mobileFields = document.getElementById("mobile-fields");
 
     if (brandSelect) brandSelect.value = "";
     if (systemSelect) {
@@ -459,4 +451,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 300);
         });
     }
+
+    // Inicializa os seletores limpos ao carregar a página
+    toggleDeviceType();
 });
