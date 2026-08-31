@@ -1,0 +1,17 @@
+{
+  "short_name": "Techshop",
+  "name": "Techshop",
+  "icons": [
+    {
+      "src": "Mascote.png",
+      "type": "image/png",
+      "sizes": "192x192 512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "display": "standalone",
+  "orientation": "portrait"
+}

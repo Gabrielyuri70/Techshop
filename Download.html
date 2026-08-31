@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganhe Dinheiro Indicando</title>
+    
+    <!-- PWA Configurações -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="Mascote.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Techshop">
+    <link rel="apple-touch-icon" href="Mascote.png">
+
+        <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="download.js" defer></script>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js');
+      }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Aplicativos</h1>
+            <div class="nav-container">
+    <nav class="nav-bar">
+    <a href="index.html" class="nav-link">Início</a>
+    <a href="Download.html" class="nav-link active">Download</a>
+    <a href="indicacao.html" class="nav-link">Ganhe Dinheiro</a>
+    <a href="aparelhos.html" class="nav-link">Aparelhos</a>
+    <button type="button" class="nav-link" onclick="openPanelModal()" style="background:none; border:none; font:inherit; cursor:pointer;">Painéis</button>
+    <a href="https://wa.me/5591993769751?text=Ol%C3%A1%2C%20estou%20precisando%20de%20suporte." target="_blank" class="nav-link whatsapp">Suporte</a>
+</nav>
+</div>
+            <p class="header-subtitle">Consulte a compatibilidade com a sua Smart TV</p>
+        </header>
+
+                <section class="card-step">
+            <h2>1. Pesquise ou selecione seu dispositivo</h2>
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">
+                
+                                <!-- 1. Campo de Busca no Topo -->
+                <div>
+                    <label for="search-input" style="font-size: 0.8rem; color: var(--text-secondary); font-weight: bold;">BUSQUE POR MARCA, SISTEMA OU APLICATIVO</label>
+                    <input type="text" id="search-input" placeholder="Ex: Samsung, Roku, Firestick, UniTV..." style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; margin-top: 4px;">
+                </div>
+
+                <div style="text-align: center; margin: 14px 0 6px 0; font-size: 0.75rem; color: var(--text-secondary); font-weight: bold; letter-spacing: 0.5px;">
+                    — OU SELECIONE NAS OPÇÕES ABAIXO —
+                </div>
+
+                <!-- 2. Tipo de Dispositivo -->
+                <div>
+                    <label for="device-type-select">Tipo de Dispositivo</label>
+                    <select id="device-type-select" onchange="toggleDeviceType()">
+                        <option value="tv">Smart TV / TV Box</option>
+                        <option value="mobile">Celular / Tablet</option>
+                        <option value="web">Web (Navegador)</option>
+                    </select>
+                </div>
+
+                <!-- Campos para Smart TV -->
+                <div id="tv-fields">
+                    <label for="brand-select">Marca da TV</label>
+                    <select id="brand-select" onchange="updateSystems()">
+                        <option value="">-- Selecione a Marca --</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="lg">LG</option>
+                        <option value="tcl">TCL</option>
+                        <option value="aoc">AOC</option>
+                        <option value="aiwa">AIWA</option>
+                        <option value="philco">Philco</option>
+                        <option value="semp">Semp</option>
+                        <option value="hisense">Hisense</option>
+                        <option value="multilaser">Multilaser</option>
+                        <option value="britania">Britânia</option>
+                        <option value="outro">Outro</option>
+                    </select>
+
+                    <label for="system-select" style="margin-top: 12px;">Sistema Operacional</label>
+                    <select id="system-select" onchange="filterApps()" disabled>
+                        <option value="">-- Escolha a marca primeiro --</option>
+                    </select>
+                </div>
+
+                <!-- Campos para Celular -->
+                <div id="mobile-fields" style="display: none;">
+                    <label for="mobile-os-select">Sistema do Celular</label>
+                    <select id="mobile-os-select" onchange="filterApps()">
+                        <option value="">-- Selecione o Sistema --</option>
+                        <option value="mobile_android">Android (Samsung, Motorola, Xiaomi, etc)</option>
+                        <option value="mobile_ios">iOS (iPhone / iPad)</option>
+                    </select>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Botão Suporte via WhatsApp -->
+        <div style="margin-top: 10px;">
+            <a href="https://wa.me/5591993769751?text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20para%20encontrar%20o%20aplicativo%20ideal" target="_blank" class="btn-whatsapp">Falar com Suporte no WhatsApp</a>
+        </div>
+        <section class="card-step" id="results-section" style="display: none;">
+            <h2>2. Aplicativos Compatíveis</h2>
+            <div id="apps-container" class="app-grid" style="margin-top: 10px;">
+                <!-- Conteúdo renderizado dinamicamente via JS -->
+            </div>
+        </section>
+    </div>
+  <!-- Modal de Acesso aos Painéis -->
+<div id="panel-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <button type="button" class="modal-close" onclick="closePanelModal()">&times;</button>
+        
+                <div id="pin-step">
+            <h3>Área Restrita</h3>
+            <p>Digite o PIN de acesso para visualizar os painéis:</p>
+            <input type="password" id="pin-input" maxlength="4" placeholder="****" onkeyup="if(event.key === 'Enter') validatePin()" style="text-align: center; font-size: 1.2rem; letter-spacing: 4px; width: 100%; padding: 8px; margin: 12px 0;">
+            <button type="button" class="btn-pay" onclick="validatePin()" style="width: 100%;">Acessar</button>
+            <p id="pin-error" style="color: #ff4d4d; font-size: 0.85rem; margin-top: 8px; display: none;">PIN incorreto. Tente novamente.</p>
+        </div>
+
+        <div id="panels-step" style="display: none;">
+            <h3>Painéis das Plataformas</h3>
+            <div class="panels-grid" style="display: grid; gap: 8px; max-height: 350px; overflow-y: auto; margin-top: 12px;">
+                <a href="https://panel-web.site" target="_blank" class="btn-pay">Painel UNITV</a>
+                <a href="https://searchdefense.top" target="_blank" class="btn-pay">Painel Uniplay</a>
+                <a href="https://controle.vip/users" target="_blank" class="btn-pay">Painel Five</a>
+                <a href="https://wwpanel.link/user-list" target="_blank" class="btn-pay">Painel Warez</a>
+                <a href="https://painelcliente.com/" target="_blank" class="btn-pay">Painel Play Fast</a>
+                <a href="https://painelnekotv.sbs" target="_blank" class="btn-pay">Painel Neko TV</a>
+                <a href="https://cms.rboys02.click/" target="_blank" class="btn-pay">Painel Rboys (GF)</a>
+                <a href="https://e3office.click" target="_blank" class="btn-pay">Painel E3PLAY</a>
+                <a href="https://lookdefense.top" target="_blank" class="btn-pay">Painel New TVs</a>
+                <a href="https://adminx.offo.dad/dashboard/iptv" target="_blank" class="btn-pay">Painel Elite</a>
+                <a href="https://dashboard.bz/login.php" target="_blank" class="btn-pay">Painel Club</a>
+                <a href="https://www.gestor.rs/master.asp" target="_blank" class="btn-pay">Painel Blade</a>
+                <a href="https://ailivecms.aiiptv.com/" target="_blank" class="btn-pay">Painel iplay5</a>
+                <a href="https://onecontrol.lat/login" target="_blank" class="btn-pay">Painel Cliente TV</a>
+                <a href="https://painel.p2player.top" target="_blank" class="btn-pay">Painel P2Player</a>
+                <a href="https://sparkpainel.top/" target="_blank" class="btn-pay">Painel Spark Play</a>
+                <a href="https://blackpainel.com/#" target="_blank" class="btn-pay">Painel Fire TV</a>
+                <a href="https://prpainel.online/#/resellers" target="_blank" class="btn-pay">Painel Power</a>
+                <a href="https://p2speed.com/#/sign-in" target="_blank" class="btn-pay">Painel P2speed</a>
+                <a href="https://lumatv.top/login" target="_blank" class="btn-pay">Painel Luma</a>
+                <a href="https://painelacesso1.com/login/" target="_blank" class="btn-pay">Painel P2CINE</a>
+                <a href="https://bin2.painelr.top/login" target="_blank" class="btn-pay">Painel Zeus</a>
+                <a href="https://ptvr.painelr.top/login" target="_blank" class="btn-pay">Painel Zeus Franquia</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openPanelModal() {
+        const modal = document.getElementById("panel-modal");
+        if (!modal) return;
+        modal.style.display = "flex";
+        const pinStep = document.getElementById("pin-step");
+        const panelsStep = document.getElementById("panels-step");
+        const pinInput = document.getElementById("pin-input");
+        const pinError = document.getElementById("pin-error");
+
+        if (pinStep) pinStep.style.display = "block";
+        if (panelsStep) panelsStep.style.display = "none";
+        if (pinInput) pinInput.value = "";
+        if (pinError) pinError.style.display = "none";
+    }
+
+    function closePanelModal() {
+        const modal = document.getElementById("panel-modal");
+        if (modal) modal.style.display = "none";
+    }
+
+    function validatePin() {
+        const pinInput = document.getElementById("pin-input");
+        const pinError = document.getElementById("pin-error");
+        const pinStep = document.getElementById("pin-step");
+        const panelsStep = document.getElementById("panels-step");
+
+        if (!pinInput) return;
+
+        if (pinInput.value === "2020") {
+            if (pinStep) pinStep.style.display = "none";
+            if (panelsStep) panelsStep.style.display = "block";
+        } else {
+            if (pinError) pinError.style.display = "block";
+        }
+    }
+</script>
+</body>
+</html>
